@@ -8,7 +8,7 @@ public class Todoapp {
 
     public static void main(String[] args)
     {
-        Todoapp vacation = new Todoapp();
+        Todoapp todo = new Todoapp();
         System.out.println("welcome to TODO Application");
         System.out.println("Please select what you want to do");
         System.out.println("1.Add the task");
@@ -20,15 +20,15 @@ public class Todoapp {
 
         switch(input) {
             case 1 :
-                vacation.addTask();
+                todo.addTask();
                 break;
 
             case 2 :
-                vacation.editTask();
+                todo.editTask();
                 break;
 
             case 3 :
-                vacation.removeTask();
+                todo.removeTask();
                 break;
 
             default : // Optional
