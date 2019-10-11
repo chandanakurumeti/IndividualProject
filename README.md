@@ -1,4 +1,4 @@
-# practice
+# Individual Project - To Do List Application
 
 Individual project has two classes as Task and Todoapp.
 
