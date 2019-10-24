@@ -17,10 +17,10 @@ public Task()
 {
 
 }
-    String title;
-    LocalDate duedate;
-    String project;
-    String status;
+    public String title;
+    public LocalDate duedate;
+    public String project;
+    public String status;
 
 
 

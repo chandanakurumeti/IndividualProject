@@ -13,8 +13,7 @@ public class TaskOperations extends Task {
     private ArrayList<Task> taskList = (ArrayList<Task>) file.readFromFile("Tasklist.txt");
     Scanner s = new Scanner(System.in);
 
-
-    public void addTask() throws IOException {
+      public void getTaskDataToAdd() throws IOException {
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter title of the task you wanted to add");
         String title = s.nextLine();
@@ -33,14 +32,9 @@ public class TaskOperations extends Task {
         System.out.println("Project:" +project);
         System.out.println("Status:" +status);
         String confirm = s.next();
-        if(confirm.toUpperCase().equals("Y"))
-        {
-            Task task = new Task(title,duedate,project,status);
-            taskList.add(task);
-           // writeToFile("Tasklist.txt",taskList);
-            System.out.println("Task has been added successfully...check below");
-            showTasks();
-
+        if(confirm.toUpperCase().equals("Y")) {
+            Task task = new Task(title, duedate, project, status);
+            taskList =  addTask(task,taskList);
         }
         else
         {
@@ -51,8 +45,15 @@ public class TaskOperations extends Task {
 
     }
 
+    public ArrayList<Task> addTask(Task task,ArrayList<Task> taskList) throws IOException {
 
-    public void editTask() throws IOException {
+            taskList.add(task);
+            System.out.println("Task has been added successfully");
+            return taskList;
+        }
+
+
+   public void getInputToEditTask() throws IOException {
         getTasks();
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter the task index you want to edit");
@@ -63,44 +64,63 @@ public class TaskOperations extends Task {
             System.out.println("Please enter valid task index to edit");
             index = s.nextInt();
         }
-            System.out.println("Please enter the details you wanted to edit in the above task ");
-            System.out.println("such as \"title\" or \"duedate\" or \"project\" or \"status\" ");
-            String editdetails = s.next();
+        System.out.println("Please enter the details you wanted to edit in the above task ");
+        System.out.println("such as \"title\" or \"duedate\" or \"project\" or \"status\" ");
+        String editdetails = s.next();
+       // Task t = taskList.get(index);
+        switch (editdetails) {
+            case "title":
+               System.out.println("enter the new title for your task:");
+               break;
+
+           case "duedate":
+               System.out.println("enter the new duedate for your task:");
+
+               break;
+
+           case "project":
+               System.out.println("enter the new project for your task:");
+               break;
+
+           case "status":
+               System.out.println("enter the new status for your task:");
+
+            //   t.status = newstatus;
+               break;
+           default :
+               System.out.println("invalid input");
+               TaskMenu();
+
+       }
+        String newdetails = s.next();
+        taskList = editTask(index,editdetails,newdetails,taskList);
+
+     }
+    public ArrayList<Task> editTask(int index,String editdetails,String newdetails,ArrayList<Task> taskList) throws IOException {
+
             Task t = taskList.get(index);
             switch (editdetails) {
                 case "title":
-                    System.out.println("enter the new title for your task:");
-                    String newtitle = s.next();
-                    t.title = newtitle;
+                    t.title = newdetails;
                     break;
 
                 case "duedate":
-                    System.out.println("enter the new duedate for your task:");
-                    String newduedate = s.next();
-                    LocalDate newDuedate = convertStringToDate(newduedate);
+                    LocalDate newDuedate = convertStringToDate(newdetails);
                     t.duedate = newDuedate;
-
                     break;
 
                 case "project":
-                    System.out.println("enter the new project for your task:");
-                    String newproject = s.next();
-                    t.project = newproject;
+                    t.project = newdetails;
                     break;
 
                 case "status":
-                    System.out.println("enter the new status for your task:");
-                    String newstatus = s.next();
-                    t.status = newstatus;
+                    t.status = newdetails;
                     break;
-                default :
-                    System.out.println("invalid input");
-                    TaskMenu();
 
             }
 
-            System.out.println("Task has been edited successfully...check below");
-            showTasks();
+            System.out.println("Task has been edited successfully");
+            return taskList;
 
 
     }
@@ -120,7 +140,7 @@ public class TaskOperations extends Task {
         }
 
         taskList.remove(index);
-        System.out.println("Requested task is successfully deleted from the tasklist...check below");
+        System.out.println("Requested task is successfully deleted from the tasklist");
         showTasks();
 
     }
@@ -183,18 +203,22 @@ public class TaskOperations extends Task {
         switch (input) {
             case 1:
                 try {
-                    addTask();
+                    getTaskDataToAdd();
+                    showTasks();
                 } catch (IOException e) {
                     System.out.println(e);
                 }
+
                 break;
 
             case 2:
-                editTask();
+                getInputToEditTask();
+                showTasks();
                 break;
 
             case 3:
                 removeTask();
+                showTasks();
                 break;
 
             case 4:
@@ -203,6 +227,7 @@ public class TaskOperations extends Task {
                 break;
             case 5 :
                 saveAndQuit();
+                 break;
             default: // Optional
                 // Statements
         }
