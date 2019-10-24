@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskOperationsTask {
+public class TaskOperationsTest {
 
     String datestring = "2018-09-10";
     TaskOperations tasks = new TaskOperations();
