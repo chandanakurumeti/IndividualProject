@@ -13,6 +13,7 @@ public class TaskOperations extends Task {
     private ArrayList<Task> taskList = (ArrayList<Task>) file.readFromFile("Tasklist.txt");
     Scanner s = new Scanner(System.in);
 
+
     public void addTask() throws IOException {
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter title of the task you wanted to add");
@@ -211,7 +212,7 @@ public class TaskOperations extends Task {
     public LocalDate convertStringToDate(String dateString)
     {
         LocalDate date = null;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         while(true)
         {
             try{
