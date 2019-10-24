@@ -1,4 +1,4 @@
-package Tasksmanagement;
+package tasksmanagement;
 import java.io.*;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -9,7 +9,8 @@ public class FileOperations  {
     public static boolean writeToFile (String fileName, List<Task> taskItemList) {
         boolean result = false;
         try {
-            FileOutputStream fileOut = new FileOutputStream(fileName);
+            File file = new File(fileName);
+            FileOutputStream fileOut = new FileOutputStream(file);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             for (Task taskItem : taskItemList) {
                 objectOut.writeObject(taskItem);
