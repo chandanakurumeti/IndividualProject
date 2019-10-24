@@ -1,4 +1,4 @@
-package Tasksmanagement;
+package tasksmanagement;
 
 import java.io.Serializable;
 import java.time.LocalDate;

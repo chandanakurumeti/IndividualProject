@@ -1,10 +1,10 @@
-package Tasksmanagement;
+package tasksmanagement;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import static Tasksmanagement.FileOperations.writeToFile;
+import static tasksmanagement.FileOperations.writeToFile;
 
 
 public class TaskOperations extends Task {
