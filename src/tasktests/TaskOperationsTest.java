@@ -5,6 +5,7 @@ import tasksmanagement.Task;
 import tasksmanagement.TaskOperations;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ public class TaskOperationsTest {
     TaskOperations tasks = new TaskOperations();
     String title = "packing";
     String project = "holiday";
-    LocalDate duedate = LocalDate.ofEpochDay(2019-10-06);
+    LocalDate duedate = LocalDate.ofEpochDay(2019 - 10 - 06);
     String status = "started";
-    Task t = new Task(title,duedate,project,status);
+    Task t = new Task(title, duedate, project, status);
     ArrayList<Task> tasklist = new ArrayList<>();
 
 
@@ -31,8 +32,7 @@ public class TaskOperationsTest {
 
     @Test
     @Order(1)
-    public void verifyStringToDateConversion()
-    {
+    public void verifyStringToDateConversion() {
         LocalDate datelocal = tasks.convertStringToDate(datestring);
         Assert.assertTrue(datelocal.toString().equals(datestring));
     }
@@ -40,26 +40,26 @@ public class TaskOperationsTest {
 
     /**
      * verifyAddAndEditTask() Testcase verifies the functionalities of addTask() and editTask() methods
+     *
      * @throws IOException
      */
 
     @Test
     @Order(2)
-    public void verifyAddAndEditTask() throws IOException
-    {
+    public void verifyAddAndEditTask() throws IOException {
         try {
-            tasklist = tasks.addTask(t,tasklist);
+            tasklist = tasks.addTask(t, tasklist);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-       Assert.assertTrue(tasklist.get(tasklist.size()-1).title.equals(title));
-       Assert.assertTrue(tasklist.get(tasklist.size()-1).duedate.equals(duedate));
-       Assert.assertTrue(tasklist.get(tasklist.size()-1).project.equals(project));
-       Assert.assertTrue(tasklist.get(tasklist.size()-1).status.equals(status));
-       tasklist=tasks.editTask(tasklist.size()-1,"title","packing",tasklist);
-       Assert.assertTrue(tasklist.get(tasklist.size()-1).title.equals("packing"));
+        Assert.assertTrue(tasklist.get(tasklist.size() - 1).title.equals(title));
+        Assert.assertTrue(tasklist.get(tasklist.size() - 1).duedate.equals(duedate));
+        Assert.assertTrue(tasklist.get(tasklist.size() - 1).project.equals(project));
+        Assert.assertTrue(tasklist.get(tasklist.size() - 1).status.equals(status));
+        tasklist = tasks.editTask(tasklist.size() - 1, "title", "packing", tasklist);
+        Assert.assertTrue(tasklist.get(tasklist.size() - 1).title.equals("packing"));
 
     }
 
@@ -69,11 +69,10 @@ public class TaskOperationsTest {
 
     @Test
     @Order(3)
-    public void verifyRemoveTask() throws IOException
-    {
-        tasklist = tasks.addTask(t,tasklist);
-        tasklist = tasks.removeTask(tasklist.size()-1,tasklist);
-        Assert.assertTrue(tasklist.size()==0);
+    public void verifyRemoveTask() throws IOException {
+        tasklist = tasks.addTask(t, tasklist);
+        tasklist = tasks.removeTask(tasklist.size() - 1, tasklist);
+        Assert.assertTrue(tasklist.size() == 0);
 
     }
 }
