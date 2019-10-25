@@ -1,4 +1,5 @@
 package tasktests;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import tasksmanagement.*;
@@ -15,22 +16,21 @@ public class FileOperationsTest<t> {
 
     String title = "packing";
     String project = "holiday";
-    LocalDate duedate = LocalDate.ofEpochDay(2019-10-06);
+    LocalDate duedate = LocalDate.ofEpochDay(2019 - 10 - 06);
     String status = "started";
 
     FileOperations file = new FileOperations();
-    Task t = new Task(title,duedate,project,status);
+    Task t = new Task(title, duedate, project, status);
     List<Task> tasklist = new ArrayList<>();
 
     /**
      * verifyWriteToFile() Testcase verifies the writeToFile() functionality
      */
     @Test
-    public void verifyWriteToFile()
-    {
+    public void verifyWriteToFile() {
         tasklist.add(t);
         tasklist.add(t);                         //Task t has been added to tasklist twice so the size of it at this moment is 2
-        boolean fileadded =  file.writeToFile("TestTaskList.txt", tasklist);
+        boolean fileadded = file.writeToFile("TestTaskList.txt", tasklist);
         Assert.assertTrue(fileadded);
 
     }
@@ -39,12 +39,11 @@ public class FileOperationsTest<t> {
      * verifyReadFromFile() Test verifies the ReadFromFile() functionality
      */
     @Test
-    public void verifyReadFromFile()
-    {
+    public void verifyReadFromFile() {
 
-       ArrayList<Task> readtasklist = (ArrayList<Task>) file.readFromFile("TestTaskList.txt");
-       int listlength = readtasklist.size();
-       Assert.assertTrue(listlength==2);      //since t Task has been added twice, length of it at this stage should be 2
+        ArrayList<Task> readtasklist = (ArrayList<Task>) file.readFromFile("TestTaskList.txt");
+        int listlength = readtasklist.size();
+        Assert.assertTrue(listlength == 2);      //since t Task has been added twice, length of it at this stage should be 2
 
     }
 

@@ -1,4 +1,5 @@
 package tasksmanagement;
+
 import java.io.*;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -9,15 +10,16 @@ import java.util.List;
  * This Class FileOperations deals with the operations in which files are involved
  */
 
-public class FileOperations  {
+public class FileOperations {
 
     /**
      * writeToFile() method gets the data from the arraylist and writes it into the file
+     *
      * @param fileName
      * @param taskItemList
      * @return boolean result
      */
-    public static boolean writeToFile (String fileName, List<Task> taskItemList) {
+    public static boolean writeToFile(String fileName, List<Task> taskItemList) {
         boolean result = false;
         try {
             File file = new File(fileName);   //creating a file with the fileName
@@ -32,11 +34,13 @@ public class FileOperations  {
         } catch (Exception ex) {
             //ex.printStackTrace();
             System.out.printf("ERROR: %s\n ", ex);
-        } return result;        // returns false if tasks are not added to the file.
+        }
+        return result;        // returns false if tasks are not added to the file.
     }
 
     /**
      * readFromFile() method reads the data from file into the arraylist
+     *
      * @param fileName
      * @return loadList
      */
@@ -46,7 +50,7 @@ public class FileOperations  {
         try {
             FileInputStream fileIn = new FileInputStream(fileName);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            while (fileIn.available() > 0){         // check if the file stream is at the end
+            while (fileIn.available() > 0) {         // check if the file stream is at the end
                 Task obj = (Task) objectIn.readObject();
                 loadList.add(obj);                  //getting the data from file and adding into the arraylist created loadList
             }
