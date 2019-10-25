@@ -124,15 +124,19 @@ public class TaskOperations extends Task {
 
 
     }
+public void getIndexToRemoveTask() throws IOException {
+    getTasks();
+    Scanner s = new Scanner(System.in);
+    System.out.println("please enter the index of the task you want to remove");
+
+    int index = s.nextInt();
+    taskList = removeTask(index,taskList);
+
+}
+
+    public ArrayList<Task> removeTask(int index,ArrayList<Task> taskList) throws IOException {
 
 
-    public void removeTask() throws IOException {
-
-        getTasks();
-        Scanner s = new Scanner(System.in);
-        System.out.println("please enter the index of the task you want to remove");
-
-        int index = s.nextInt();
         while((index>(taskList.size()-1))||(index<0))
         {
             System.out.println("Please enter valid task index to remove");
@@ -141,7 +145,7 @@ public class TaskOperations extends Task {
 
         taskList.remove(index);
         System.out.println("Requested task is successfully deleted from the tasklist");
-        showTasks();
+       return taskList;
 
     }
 
@@ -217,7 +221,7 @@ public class TaskOperations extends Task {
                 break;
 
             case 3:
-                removeTask();
+                getIndexToRemoveTask();
                 showTasks();
                 break;
 
@@ -228,8 +232,8 @@ public class TaskOperations extends Task {
             case 5 :
                 saveAndQuit();
                  break;
-            default: // Optional
-                // Statements
+            default: System.out.println("INVALID INPUT");
+                saveAndQuit();
         }
 
     }
