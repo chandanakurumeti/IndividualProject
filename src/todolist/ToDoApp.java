@@ -10,12 +10,12 @@ package todolist;
  * It displays the welcome message and main menu of the application
  */
 
-public class Todoapp {
+public class ToDoApp {
 
     public static void main(String[] args) throws IOException {
         TaskOperations todo = new TaskOperations();
         ArrayList<Task> taskList = new ArrayList<>();
-        Todoapp menu = new Todoapp();
+        ToDoApp menu = new ToDoApp();
         System.out.println("***** welcome to TODO Application *****");
         todo.TaskMenu();
     }

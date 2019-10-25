@@ -189,7 +189,6 @@ public class TaskOperations extends Task {
 
     /**
      * getTasks() method displays all the tasks present in the array list.
-     *
      * @throws IOException
      */
 
